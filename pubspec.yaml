@@ -30,6 +30,7 @@ dependencies:
   cupertino_icons: ^1.0.1
   flutter_svg: ^0.19.3
   qr_code_scanner: ^0.2.0
+  animated_splash: ^1.0.0
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -58,6 +59,8 @@ flutter:
     - assets/images/Layer -3.svg
     - assets/images/Layer -4.svg
     - assets/images/Layer 2.svg
+    - assets\images\mcGH.gif
+    - assets\images\paper.svg
 
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in
