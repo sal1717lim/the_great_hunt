@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="51" height="49.59" viewBox="0 0 51 49.59">
+  <g id="qr-code-scan_msg" data-name="qr-code-scan msg" transform="translate(12)">
+    <path id="Tracé_3879" data-name="Tracé 3879" d="M374.735,0H370.82a.82.82,0,1,0,0,1.639h3.916a1.386,1.386,0,0,1,1.385,1.385V6.94a.82.82,0,1,0,1.639,0V3.024A3.027,3.027,0,0,0,374.735,0Z" transform="translate(-349.782)" fill="#c8a67a"/>
+    <path id="Tracé_3880" data-name="Tracé 3880" d="M.82,7.759a.82.82,0,0,0,.82-.82V3.024A1.386,1.386,0,0,1,3.024,1.639H6.94A.82.82,0,1,0,6.94,0H3.024A3.027,3.027,0,0,0,0,3.024V6.94a.82.82,0,0,0,.82.82Z" transform="translate(0 0)" fill="#c8a67a"/>
+    <path id="Tracé_3881" data-name="Tracé 3881" d="M6.94,376.12H3.024a1.386,1.386,0,0,1-1.385-1.385V370.82a.82.82,0,1,0-1.639,0v3.916a3.027,3.027,0,0,0,3.024,3.024H6.94a.82.82,0,0,0,0-1.639Z" transform="translate(0 -349.782)" fill="#c8a67a"/>
+    <path id="Tracé_3882" data-name="Tracé 3882" d="M376.94,370a.82.82,0,0,0-.82.82v3.916a1.386,1.386,0,0,1-1.385,1.385H370.82a.82.82,0,0,0,0,1.639h3.916a3.027,3.027,0,0,0,3.024-3.024V370.82A.82.82,0,0,0,376.94,370Z" transform="translate(-349.782 -349.782)" fill="#c8a67a"/>
+    <path id="Tracé_3883" data-name="Tracé 3883" d="M327.463,81.639h2.6a.645.645,0,0,1,.644.644v2.6a.82.82,0,0,0,1.639,0v-2.6A2.286,2.286,0,0,0,330.062,80h-2.6a.82.82,0,1,0,0,1.639Z" transform="translate(-308.794 -75.629)" fill="#c8a67a"/>
+    <path id="Tracé_3884" data-name="Tracé 3884" d="M81,82.283v2.6a.82.82,0,0,0,1.639,0v-2.6a.645.645,0,0,1,.644-.644h2.6a.82.82,0,0,0,0-1.639h-2.6A2.286,2.286,0,0,0,81,82.283Z" transform="translate(-76.574 -75.629)" fill="#c8a67a"/>
+    <path id="Tracé_3885" data-name="Tracé 3885" d="M85.883,329.707h-2.6a.645.645,0,0,1-.644-.644v-2.6a.82.82,0,0,0-1.639,0v2.6a2.286,2.286,0,0,0,2.283,2.283h2.6a.82.82,0,0,0,0-1.639Z" transform="translate(-76.574 -307.85)" fill="#c8a67a"/>
+    <path id="Tracé_3886" data-name="Tracé 3886" d="M332.345,329.063v-2.6a.82.82,0,1,0-1.639,0v2.6a.645.645,0,0,1-.644.644h-2.6a.82.82,0,0,0,0,1.639h2.6A2.286,2.286,0,0,0,332.345,329.063Z" transform="translate(-308.794 -307.85)" fill="#c8a67a"/>
+    <path id="Tracé_3887" data-name="Tracé 3887" d="M1,241.82a.82.82,0,0,0,.82.82H28.048a.82.82,0,1,0,0-1.639H1.82A.82.82,0,0,0,1,241.82Z" transform="translate(-0.945 -227.831)" fill="#c8a67a"/>
+    <text id="scan_maping_msg" data-name="scan maping msg" transform="translate(-12 34.59)" fill="#c5a072" font-size="11" font-family="SegoeUI, Segoe UI" letter-spacing="0.001em"><tspan x="14.11" y="12">Scan</tspan></text>
+  </g>
+</svg>

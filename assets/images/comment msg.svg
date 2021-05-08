@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="60" height="47.253" viewBox="0 0 60 47.253">
+  <g id="comment_msg" data-name="comment msg" transform="translate(12.81 -3.583)">
+    <path id="Tracé_3317" data-name="Tracé 3317" d="M0,27.453V12.161A8.588,8.588,0,0,1,8.578,3.583h14.1a8.589,8.589,0,0,1,8.58,8.578V14.8a8.588,8.588,0,0,1-8.578,8.578H8.777ZM8.578,5.5a6.673,6.673,0,0,0-6.665,6.665v12.3l6.443-2.993H22.676A6.673,6.673,0,0,0,29.341,14.8V12.16a6.674,6.674,0,0,0-6.667-6.665H8.578Zm.631,6.52A1.819,1.819,0,1,1,7.39,13.834,1.818,1.818,0,0,1,9.208,12.015Zm12.836,0a1.819,1.819,0,1,1-1.819,1.819A1.818,1.818,0,0,1,22.045,12.015Zm-6.419,0a1.819,1.819,0,1,1-1.819,1.819A1.818,1.818,0,0,1,15.625,12.015Z" transform="translate(0 0)" fill="#b48346"/>
+    <text id="msg_msg" data-name="msg msg" transform="translate(-12.81 35.836)" fill="#b48346" font-size="11" font-family="SegoeUI, Segoe UI" letter-spacing="0.001em"><tspan x="3.753" y="12">Messaging</tspan></text>
+  </g>
+</svg>
