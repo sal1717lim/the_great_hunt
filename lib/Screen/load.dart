@@ -12,11 +12,11 @@ class load extends StatelessWidget{
       children: [
         SvgPicture.asset("assets\\images\\paper.svg"),
         Positioned(
-          bottom: 0,top: 0,
+          bottom: 0,top: 0,left: 0,right: 0,
             child: AnimatedSplash(
           imagePath: "assets\\images\\mcGH.gif",
           home: MyHomePage(),
-          duration: 5000,
+          duration: 6000,
               type: AnimatedSplashType.StaticDuration,
 
         ))

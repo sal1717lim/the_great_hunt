@@ -1,8 +1,11 @@
+
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:qr_code_scanner/qr_code_scanner.dart';
-
+import 'package:flutter/cupertino.dart';
+import 'package:model_viewer/model_viewer.dart';
 
 class MyHomePage extends StatefulWidget {
 
@@ -21,7 +24,7 @@ class _MyHomePageState extends State<MyHomePage> {
   var icon;
   QRViewController controller;
   Barcode result;
-
+  bool scaned=true;
 
 
   @override
@@ -165,10 +168,36 @@ class _MyHomePageState extends State<MyHomePage> {
   void _onQRViewCreated(QRViewController controller) {
     this.controller = controller;
     controller.scannedDataStream.listen((scanData) {
-      setState(() {
+
         result = scanData;
-        print(result.code);
-      });
+
+        showCupertinoDialog(context: context,
+            builder: (BuildContext context) {
+
+               return CupertinoDialog(
+
+                  child: Container(
+                    color:Colors.amber,
+                    height: MediaQuery.of(context).size.height*0.7,
+                    width: 100,
+                    child: ModelViewer(
+                      backgroundColor: Colors.teal[50],
+                      src: 'assets\\images\\dela3_glb.glb',
+                      alt: "A 3D model of an table soccer",
+                      autoPlay: true,
+                      autoRotate: true,
+                      cameraControls: true,
+                    ),
+
+
+                  ));
+            });
+
+
+
+
+
+
     });
   }
 

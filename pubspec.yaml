@@ -31,6 +31,7 @@ dependencies:
   flutter_svg: ^0.19.3
   qr_code_scanner: ^0.2.0
   animated_splash: ^1.0.0
+  model_viewer: ^0.8.1
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -43,6 +44,7 @@ dev_dependencies:
 # The following section is specific to Flutter.
 flutter:
   assets:
+    - assets/images/dela3_glb.glb
     - assets/images/compass.svg
     - assets/images/compass msg.svg
     - assets/images/comment msg.svg
