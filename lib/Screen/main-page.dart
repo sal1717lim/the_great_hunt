@@ -170,22 +170,20 @@ class _MyHomePageState extends State<MyHomePage> {
     controller.scannedDataStream.listen((scanData) {
 
         result = scanData;
-
+        controller.dispose();
         showCupertinoDialog(context: context,
             builder: (BuildContext context) {
 
                return CupertinoDialog(
 
                   child: Container(
-                    color:Colors.amber,
+
                     height: MediaQuery.of(context).size.height*0.7,
                     width: 100,
                     child: ModelViewer(
                       backgroundColor: Colors.teal[50],
-                      src: 'assets\\images\\dela3_glb.glb',
+                      src: 'assets/images/dela3_glb.glb',
                       alt: "A 3D model of an table soccer",
-                      autoPlay: true,
-                      autoRotate: true,
                       cameraControls: true,
                     ),
 
