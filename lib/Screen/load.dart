@@ -2,12 +2,16 @@ import 'package:flutter/material.dart';
 import 'package:animated_splash/animated_splash.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'main-page.dart';
+import '../ressource/bdd.dart';
+
 class load extends StatelessWidget{
 
 
   @override
-  Widget build(BuildContext context) {
-    // TODO: implement build
+  build(BuildContext context) {
+    /*script de base de donnée*/
+    bddexiste();
+
     return Stack(
       children: [
 
@@ -17,7 +21,7 @@ class load extends StatelessWidget{
           imagePath: "assets\\images\\mcGH.gif",
           home: MyHomePage(),
           duration: 5000,
-              type: AnimatedSplashType.StaticDuration,
+              //type: AnimatedSplashType.StaticDuration,
 
         ))
       ],

@@ -6,6 +6,8 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:qr_code_scanner/qr_code_scanner.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:model_viewer/model_viewer.dart';
+import 'package:the_great_hunt/ressource/bdd.dart';
+import 'package:the_great_hunt/ressource/constante.dart';
 
 class MyHomePage extends StatefulWidget {
 
@@ -29,7 +31,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
-      this.Menu=[mapMenu(),null,QrCodeMenu(),null];
+      this.Menu=[mapMenu(),messageMenu(),QrCodeMenu(),null];
       this.icon=[SvgPicture.asset("assets/images/wind_rose.svg",width: MediaQuery.of(context).size.width*0.36,),SvgPicture.asset("assets/images/XMLID_1491_.svg",width: MediaQuery.of(context).size.width*0.25),SvgPicture.asset("assets/images/telescope.svg",width: MediaQuery.of(context).size.width*0.25),SvgPicture.asset("assets/images/treasure-chest.svg",width: MediaQuery.of(context).size.width*0.22)];
     return Scaffold(
       appBar: PreferredSize(
@@ -165,31 +167,103 @@ class _MyHomePageState extends State<MyHomePage> {
         );
 
   }
+  messageMenu(){
+    message=[];
+    var taille=list_hint.length;
+    int i=0;
+    while(i<taille){
+      message.add(SizedBox(height: 20));
+      message.add(
+        Row(
+          children: [
+            Container(
+              margin: EdgeInsets.all(10),
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(15),
+                color: Colors.red
+              ),
+              width: MediaQuery.of(context).size.width*0.45,
+              child: Text(
+                list_hint[i]["hint"]
+
+              ),
+            )
+          ],
+        )
+          );
+
+      i=i+1;
+    }
+    return SingleChildScrollView(
+      child: Column(
+        children: message,
+      ),
+    );
+  }
   void _onQRViewCreated(QRViewController controller) {
     this.controller = controller;
-    controller.scannedDataStream.listen((scanData) {
+    controller.scannedDataStream.listen((scanData) async {
 
         result = scanData;
-        controller.dispose();
-        showCupertinoDialog(context: context,
-            builder: (BuildContext context) {
+        var qr=result.code;
+        if(!bdd.isOpen){
+          await ouvrirbdd();
+          var sqlresultat=await bdd.query("QR",where: "id='${qr}'");
+          if(sqlresultat.isNotEmpty){
+            if(sqlresultat[0]["isnot"]==0){
+              var update={"id":sqlresultat[0]["id"],"isnot":1,"iditem":sqlresultat[0]["iditem"]};
+              print(update);
+              await bdd.update("QR", update);
 
-               return CupertinoDialog(
+              var itemtuple=await bdd.query("ITEM",where: "id=${update["iditem"]}");
+              print(itemtuple);
+              bdd.close();
+              showCupertinoDialog(context: context,
+                  builder: (BuildContext context) {
 
-                  child: Container(
+                    return CupertinoDialog(
 
-                    height: MediaQuery.of(context).size.height*0.7,
-                    width: 100,
-                    child: ModelViewer(
-                      backgroundColor: Colors.teal[50],
-                      src: 'assets/images/dela3_glb.glb',
-                      alt: "A 3D model of an table soccer",
-                      cameraControls: true,
-                    ),
+                        child: Container(
+                          color: Colors.yellow,
+                          height: MediaQuery.of(context).size.height*0.7,
+                          width: 100,
+                          child: Column(
+                            children: [
+                              Center(
+                                child: Container(
+                                  height: MediaQuery.of(context).size.height*0.7*0.1,
+                                  child: Text (itemtuple[0]["name"],style: TextStyle(
+                                    fontSize: 16,
+                                    color: Colors.black
+                                  ),),
+                                ),
+                              ),
+                             Container(
+                               color: Colors.transparent,
+                               height: MediaQuery.of(context).size.height*0.7*0.3,
+                               child:  ModelViewer(
+                                 backgroundColor: Colors.transparent,
+                                 src: itemtuple[0]["modelpath"],
+
+                                 cameraControls: true,
+                                 autoPlay: true,
+                               ),
+                             )
+                            ],
+                          ),
 
 
-                  ));
-            });
+                        ));
+                  });
+
+            }
+            else{
+              await bdd.close();
+            }
+          }else{
+           await  bdd.close();
+          }
+        }
 
 
 

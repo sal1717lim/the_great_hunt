@@ -32,6 +32,8 @@ dependencies:
   qr_code_scanner: ^0.2.0
   animated_splash: ^1.0.0
   model_viewer: ^0.8.1
+  sqflite:
+  path:
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -63,6 +65,7 @@ flutter:
     - assets/images/Layer 2.svg
     - assets\images\mcGH.gif
     - assets\images\paper.svg
+    - assets/images/table.glb
 
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in
