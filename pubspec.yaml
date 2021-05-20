@@ -46,6 +46,7 @@ dev_dependencies:
 # The following section is specific to Flutter.
 flutter:
   assets:
+    - assets/images/navig.svg
     - assets/images/dela3_glb.glb
     - assets/images/compass.svg
     - assets/images/compass msg.svg
