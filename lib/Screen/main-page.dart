@@ -27,21 +27,44 @@ class _MyHomePageState extends State<MyHomePage> {
   QRViewController controller;
   Barcode result;
   bool scaned=true;
-
+  final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
 
   @override
   Widget build(BuildContext context) {
+
       this.Menu=[mapMenu(),messageMenu(),QrCodeMenu(),null];
       this.icon=[SvgPicture.asset("assets/images/wind_rose.svg",width: MediaQuery.of(context).size.width*0.36,),SvgPicture.asset("assets/images/XMLID_1491_.svg",width: MediaQuery.of(context).size.width*0.25),SvgPicture.asset("assets/images/telescope.svg",width: MediaQuery.of(context).size.width*0.25),SvgPicture.asset("assets/images/treasure-chest.svg",width: MediaQuery.of(context).size.width*0.22)];
     return Scaffold(
+      key: _scaffoldKey,
       appBar: PreferredSize(
           preferredSize: Size.fromHeight(40.0),
-          child: AppBar(
-            backgroundColor: Color(0xffB48346),
-           centerTitle: true,
-           title: Text("The Great Hunt"),
-           // hides leading widget
+          child: Container(
+            padding: EdgeInsets.only(top: 15,right: 5),
+            child: Row(
+              
+              children: [
+                IconButton(icon: Icon(Icons.menu,color: Colors.white,), onPressed: ()=>_scaffoldKey.currentState.openDrawer()),
+                Spacer(),
+                Text("The Great Hunt",style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 15
+                ),),Spacer()
+                ,IconButton(icon: Icon(Icons.house_rounded,color: Colors.white,), onPressed: (){}),
 
+              ],
+            ),
+            height: 80,
+            width: MediaQuery.of(context).size.width,
+            decoration: BoxDecoration(
+              gradient: LinearGradient(
+
+                begin: Alignment.topLeft,
+                end: Alignment.bottomRight,
+                colors: [Color(0xffc00329),
+                  Color(0xff760621),
+                ],
+              )
+            ),
           )
       ),
       bottomNavigationBar: Container(
@@ -174,23 +197,25 @@ class _MyHomePageState extends State<MyHomePage> {
     while(i<taille){
       message.add(SizedBox(height: 20));
       message.add(
-        Row(
-          children: [
+          Center(child:
             Container(
               margin: EdgeInsets.all(10),
+              padding: EdgeInsets.all(10),
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(15),
-                color: Colors.red
+                color: Color(0xffb92342)
               ),
-              width: MediaQuery.of(context).size.width*0.45,
+              width: MediaQuery.of(context).size.width*0.6,
               child: Text(
-                list_hint[i]["hint"]
+                list_hint[i]["hint"],style: TextStyle(
+                color: Colors.white
+              ),
 
               ),
             )
-          ],
-        )
-          );
+
+
+          ));
 
       i=i+1;
     }
