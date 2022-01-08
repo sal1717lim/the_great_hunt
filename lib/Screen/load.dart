@@ -12,6 +12,7 @@ class load extends StatelessWidget{
     /*script de base de donnée*/
     bddexiste();
 
+
     return Stack(
       children: [
 
