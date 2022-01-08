@@ -28,66 +28,46 @@ class _MyHomePageState extends State<MyHomePage> {
   Barcode result;
   bool scaned=true;
 
+  final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
 
   @override
   Widget build(BuildContext context) {
       this.Menu=[mapMenu(),messageMenu(),QrCodeMenu(),null];
       this.icon=[SvgPicture.asset("assets/images/wind_rose.svg",width: MediaQuery.of(context).size.width*0.36,),SvgPicture.asset("assets/images/XMLID_1491_.svg",width: MediaQuery.of(context).size.width*0.25),SvgPicture.asset("assets/images/telescope.svg",width: MediaQuery.of(context).size.width*0.25),SvgPicture.asset("assets/images/treasure-chest.svg",width: MediaQuery.of(context).size.width*0.22)];
     return Scaffold(
+      key: _scaffoldKey,
       appBar: PreferredSize(
           preferredSize: Size.fromHeight(40.0),
-          child: AppBar(
-            backgroundColor: Color(0xffB48346),
-           centerTitle: true,
-           title: Text("The Great Hunt"),
-           // hides leading widget
+          child: Container(
+            padding: EdgeInsets.only(top: 15,right: 5),
+            child: Row(
 
-          )
-      ),
-      bottomNavigationBar: Container(
-        width: MediaQuery.of(context).size.width,
-        height: MediaQuery.of(context).size.height*0.2,
-        child: Stack(
-          children: [
-            Positioned(
-                bottom: 0,
-                child: Container(
-                    width: MediaQuery.of(context).size.width,
-                    height: MediaQuery.of(context).size.height*0.1,
-                    decoration: BoxDecoration(
-                      border: Border.all(color:Color(0xffB48346),width: 5),
-                      borderRadius: BorderRadius.circular(10),
-                      color: Colors.white
-                    ),
-                    child: Row(
-                      children: [
-                        Container(width: MediaQuery.of(context).size.width*0.2,height:MediaQuery.of(context).size.height*0.1 ,child: FlatButton(onPressed: (){setState(() {
-                          this._selectedIndex=0;
-                        });},child: SvgPicture.asset("assets/images/compass msg.svg",width:MediaQuery.of(context).size.width*0.15,height: MediaQuery.of(context).size.height*0.1,)),),
-                        Container(width: MediaQuery.of(context).size.width*0.2,height:MediaQuery.of(context).size.height*0.1 ,child: FlatButton(onPressed: (){setState(() {
-                          this._selectedIndex=1;
-                        });},child: SvgPicture.asset("assets/images/comment msg.svg",width:MediaQuery.of(context).size.width*0.15,height: MediaQuery.of(context).size.height*0.1,)),),
-                        Spacer(),
-                        Container(width: MediaQuery.of(context).size.width*0.2,height:MediaQuery.of(context).size.height*0.1 ,child: FlatButton(onPressed: (){setState(() {
-                          this._selectedIndex=2;
-                        });},child: SvgPicture.asset("assets/images/qr-code-scan msg.svg",width:MediaQuery.of(context).size.width*0.15,height: MediaQuery.of(context).size.height*0.1,)),),
-                        Container(width: MediaQuery.of(context).size.width*0.2,height:MediaQuery.of(context).size.height*0.1 ,child: FlatButton(onPressed: (){
-                          setState(() {
-                            this._selectedIndex=3;
-                          });
-                        },child: SvgPicture.asset("assets/images/lb msg.svg",width:MediaQuery.of(context).size.width*0.15,height: MediaQuery.of(context).size.height*0.1,)),),
-                      ],
-                    ),
+              children: [
+                IconButton(icon: Icon(Icons.menu,color: Colors.white,), onPressed: ()=>_scaffoldKey.currentState.openDrawer()),
+                Spacer(),
+                Text("The Great Hunt",style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 15
+                ),),Spacer()
+                ,IconButton(icon: Icon(Icons.house_rounded,color: Colors.white,), onPressed: (){}),
+
+              ],
+            ),
+            height: 80,
+            width: MediaQuery.of(context).size.width,
+            decoration: BoxDecoration(
+                gradient: LinearGradient(
+
+                  begin: Alignment.topLeft,
+                  end: Alignment.bottomRight,
+                  colors: [Color(0xffc00329),
+                    Color(0xff760621),
+                  ],
                 )
             ),
-            Center(
-              child: this.icon[this._selectedIndex],
-            )          ],
-        ),
-        decoration: BoxDecoration(
-          color: Colors.transparent
-        ),
+          )
       ),
+
       drawer: Drawer(
         child:Container(
           color: Color(0xffC7A375) ,
@@ -98,7 +78,53 @@ class _MyHomePageState extends State<MyHomePage> {
           ),
         ),
       ),
-      body: Menu[_selectedIndex],
+      body: Stack(
+        children: [
+          Positioned(child: Menu[_selectedIndex],
+          )
+          ,Positioned(child: Container(
+            width: MediaQuery.of(context).size.width,
+            height: MediaQuery.of(context).size.height*0.14,
+            child: Stack(
+              children: [
+                Positioned(bottom:0,child: Image.asset("assets/images/navig.png",width: MediaQuery.of(context).size.width,)),
+                Positioned(
+                    bottom: 14,
+                    child: Container(
+                      width: MediaQuery.of(context).size.width,
+                      height: MediaQuery.of(context).size.height*0.1,
+
+                      child: Row(
+                        children: [
+                          Container(width: MediaQuery.of(context).size.width*0.2,height:MediaQuery.of(context).size.height*0.1 ,child: FlatButton(onPressed: (){setState(() {
+                            this._selectedIndex=0;
+                          });},child: SvgPicture.asset("assets/images/compass msg.svg",width:MediaQuery.of(context).size.width*0.15,height: MediaQuery.of(context).size.height*0.1,)),),
+                          Container(width: MediaQuery.of(context).size.width*0.2,height:MediaQuery.of(context).size.height*0.1 ,child: FlatButton(onPressed: (){setState(() {
+                            this._selectedIndex=1;
+                          });},child: SvgPicture.asset("assets/images/comment msg.svg",color:Colors.black,width:MediaQuery.of(context).size.width*0.15,height: MediaQuery.of(context).size.height*0.1,)),),
+                          Spacer(),
+                          Container(width: MediaQuery.of(context).size.width*0.2,height:MediaQuery.of(context).size.height*0.1 ,child: FlatButton(onPressed: (){setState(() {
+                            this._selectedIndex=2;
+                          });},child: SvgPicture.asset("assets/images/qr-code-scan msg.svg",color:Colors.black,width:MediaQuery.of(context).size.width*0.15,height: MediaQuery.of(context).size.height*0.1,)),),
+                          Container(width: MediaQuery.of(context).size.width*0.2,height:MediaQuery.of(context).size.height*0.1 ,child: FlatButton(onPressed: (){
+                            setState(() {
+                              this._selectedIndex=3;
+                            });
+                          },child: SvgPicture.asset("assets/images/lb msg.svg",color:Colors.black,width:MediaQuery.of(context).size.width*0.15,height: MediaQuery.of(context).size.height*0.1,)),),
+                        ],
+                      ),
+                    )
+                ),
+                Center(
+                  child: this.icon[this._selectedIndex],
+                )          ],
+            ),
+            decoration: BoxDecoration(
+                color: Colors.transparent
+            ),
+          ),bottom: 0,)
+        ],
+      )
 
     );
   }
@@ -129,7 +155,9 @@ class _MyHomePageState extends State<MyHomePage> {
     );
   }
   QrCodeMenu(){
-    return Center(
+    return Container(
+      height: MediaQuery.of(context).size.height,
+        child:Center(
 
           // To ensure the Scanner view is properly sizes after rotation
           // we need to listen for Flutter SizeChanged notification and update controller
@@ -144,18 +172,18 @@ class _MyHomePageState extends State<MyHomePage> {
                   ),
                 ),
             Container(
-             height: MediaQuery.of(context).size.height*0.7,
+             height: MediaQuery.of(context).size.height,
               width: MediaQuery.of(context).size.width,
               color: Colors.black.withOpacity(0.1),
               child: Center(
                 child: Container(
-                  width: MediaQuery.of(context).size.width*0.6,
-                  height:  MediaQuery.of(context).size.width*0.6,
+                  width: MediaQuery.of(context).size.width*0.7,
+                  height:  MediaQuery.of(context).size.width*0.7,
 
                   decoration: BoxDecoration(
                     border: Border.all(color: Colors.red,width: 5),
                     borderRadius: BorderRadius.circular(10),
-                        
+
                   ),
                 ),
               ),
@@ -164,7 +192,7 @@ class _MyHomePageState extends State<MyHomePage> {
               ],
             )
 
-        );
+        ));
 
   }
   messageMenu(){
@@ -174,28 +202,34 @@ class _MyHomePageState extends State<MyHomePage> {
     while(i<taille){
       message.add(SizedBox(height: 20));
       message.add(
-        Row(
-          children: [
-            Container(
-              margin: EdgeInsets.all(10),
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(15),
-                color: Colors.red
-              ),
-              width: MediaQuery.of(context).size.width*0.45,
-              child: Text(
-                list_hint[i]["hint"]
+          Center(child:
+          Container(
 
-              ),
-            )
-          ],
-        )
-          );
+            margin: EdgeInsets.all(10),
+            padding: EdgeInsets.all(10),
+            decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(15),
+                color: Color(0xffb92342)
+            ),
+            width: MediaQuery.of(context).size.width*0.6,
+            child: Text(
+              list_hint[i]["hint"],style: TextStyle(
+                color: Colors.white
+            ),
+
+            ),
+          )
+
+
+          ));
 
       i=i+1;
     }
+    message.add(SizedBox(height: MediaQuery.of(context).size.height,));
+
     return SingleChildScrollView(
       child: Column(
+
         children: message,
       ),
     );
